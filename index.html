@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISLAMIC BANK</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="login-area">
+        <h2 class="text-center">Welcome to Islamic Bank</h2>
+        <div class="submit">
+            <h3>Login</h3>
+            <input class="form-control" type="text" placeholder="Enter your name"><br>
+            <input class="form-control" type="password" placeholder="Enter your password"><br>
+            <button id="login" class="btn btn-success">login</button>
+        </div>
+    </div>
+    <div id="transection-area" class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-3" id="deposit">
+                <h3>Deposit</h3>
+                <h4 id="deposit-amount">  0</h4>
+            </div>
+            <div class="col-md-3" id="withdraw">
+                <h3>withdraw</h3>
+                <h4 id="withdraw-amount"> 0</h4>
+            </div>
+            <div class="col-md-3" id="amount">
+                <h3>Amount</h3>
+                <h4 id="total-amount"> 1200</h4>
+            </div>
+        </div>
+
+        <div class="row  d-flex justify-content-center">
+            <div class="col-md-5 transection">
+               <h3>withdraw</h3>
+               <input id="deposit-input" class="form-control"  placeholder="Enter your deposit amount"><br>
+               <button id="deposit-btn" class="btn btn-success">Deposit</button>
+            </div>
+            <div class="col-md-5 transection">
+                <h3>Withdraw</h3>
+                <input id="withdraw-input" class="form-control"  placeholder="Enter your withdraw amount"><br>
+                <button id="withdraw-btn" class="btn btn-success">Withdraw</button>
+             </div>
+        </div>
+    </div>
+   
+    <script>
+       const login = document.getElementById("login");
+        login.addEventListener("click", function(){
+           const loginArea = document.getElementById("login-area");
+           loginArea.style.display = "none";
+           const transection = document.getElementById("transection-area");
+           transection.style.display = "block";
+       })
+
+       const depositBtn = document.getElementById("deposit-btn");
+       depositBtn.addEventListener("click", function(){
+            let depositInput = document.getElementById('deposit-input').value;
+            let depositAmount = document.getElementById('deposit-amount').innerText;
+            depositInput = parseInt(depositInput);
+            depositAmount = parseInt(depositAmount);
+            let totalDeposit = depositAmount + depositInput;
+            let totalAmount = document.getElementById('total-amount').innerText;
+            totalAmount = parseInt(totalAmount);
+            
+            document.getElementById('deposit-amount').innerText = totalDeposit;
+            document.getElementById('deposit-input').value = "";
+            document.getElementById('total-amount').innerText = depositInput + totalAmount;
+
+       })
+
+       const withdrawBtn = document.getElementById("withdraw-btn");
+       withdrawBtn.addEventListener('click', function(){
+            let withdrawInput = document.getElementById('withdraw-input').value
+            withdrawInput = parseInt(withdrawInput);
+            let withdrawAmount = document.getElementById('withdraw-amount').innerText;
+            withdrawAmount = parseInt(withdrawAmount);
+            let totalWithdraw = withdrawAmount + withdrawInput;
+            let totalAmount = document.getElementById('total-amount').innerText;
+            totalAmount = parseInt(totalAmount);
+
+            document.getElementById('withdraw-amount').innerText = totalWithdraw;
+            document.getElementById('withdraw-input').value = "";
+            document.getElementById('total-amount').innerText = totalAmount - totalWithdraw;
+
+            
+
+       })
+
+
+       
+    </script>
+</body>
+</html>
